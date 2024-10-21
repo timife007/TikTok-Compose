@@ -242,7 +242,7 @@ fun CameraPreview(
 
     Box(modifier = Modifier.fillMaxSize()) {
         AndroidView(
-            factory = {
+            factory = { it ->
                 val cameraPreview = PreviewView(it)
                 cameraProviderFuture.addListener({
                     preview.also {
@@ -282,7 +282,7 @@ fun CameraPreview(
                     .padding(end = 10.dp),
                 defaultCameraFacing
             ) {
-                when (it) {
+                when(it){
                     CameraController.FLIP -> {
                         defaultCameraFacing =
                             if (defaultCameraFacing == CameraSelector.DEFAULT_FRONT_CAMERA) CameraSelector.DEFAULT_BACK_CAMERA else CameraSelector.DEFAULT_FRONT_CAMERA
